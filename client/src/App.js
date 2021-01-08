@@ -1,60 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 import useDebounce from "./hook/useDebounce";
+
+import Nominations from "./components/Nominations";
+import Search from "./components/Search";
 import "./App.css";
 
-const GET_MOVIES = gql`
-  query GetMovies($title: String!) {
-    movies(title: $title) {
-      id
-      title
-      year
-      poster
-    }
-  }
-`;
+// const GET_MOVIES = gql`
+//   query GetMovies($title: String!) {
+//     movies(title: $title) {
+//       id
+//       title
+//       year
+//       poster
+//     }
+//   }
+// `;
 
-function App() {
-  const [title, setTitle] = useState("");
-  const searchValue = useDebounce(title, 700);
+const App = () => {
+  // const [title, setTitle] = useState("");
+  // const searchValue = useDebounce(title, 500);
+  
+  // const [loadMovies, { data, loading, error }] = useLazyQuery(GET_MOVIES, {
+  //   fetchPolicy: 'network-only'
+  // });
+  
 
-  const [loadMovies, { data, loading, error }] = useLazyQuery(GET_MOVIES, {
-    fetchPolicy: "no-cache",
-  });
+  // const updateSearch = (e) => {
+  //   setTitle(e.target.value);
+  // };
 
-  const updateSearch = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const getSearch = (e) => {
-    e.preventDefault();
-    setTitle(searchValue);
-    loadMovies({ variables: { title: title } });
-    setTitle("");
-  };
+  // const getSearch = (e) => {
+  //   e.preventDefault();
+  //   setTitle(searchValue);
+  //   loadMovies({ variables: { title: title } });
+  //   setTitle("");
+  // };
 
   return (
     <div className="App">
-      <form onSubmit={getSearch}>
+      <Search />
+      {/* <form onSubmit={getSearch}>
         <label>Enter Movie Title</label>
-        <input value={title} onChange={updateSearch} required />
+        <input value={title} onChange={updateSearch} />
         <button type="submit">Submit</button>
-      </form>
-      {loading && <h5>Loading...</h5>}
-      {error && (
-        <h5>Oops there is an error! Try entering a different movie title</h5>
-      )}
-      {data && (
-        <ul>
-          {data.movies.map((movie) => (
-            <li key={movie.id}>
-              <p>{movie.title}</p>
-              <p>{movie.year}</p>
-              <img src={movie.poster} alt={movie.title} />
-            </li>
-          ))}
-        </ul>
-      )}
+      </form> */}
+      <Nominations />
     </div>
   );
 }
