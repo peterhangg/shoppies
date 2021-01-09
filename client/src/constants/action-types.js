@@ -1,0 +1,4 @@
+export const GET_MOVIES = "GET_MOVIES";
+export const ADD_NOMINATION = "ADD_NOMONATION";
+export const DELETE_NOMINATION = "DELETE_NOMINATION";
+export const GET_SEARCH = "GET_SEARCH";
