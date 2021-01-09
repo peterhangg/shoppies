@@ -3,6 +3,7 @@ import { gql, useLazyQuery } from "@apollo/client";
 import { useDispatch } from 'react-redux';
 import useDebounce from "../hook/useDebounce";
 import { getMovies } from "../actions/getMovies";
+import { getSearch } from "../actions/getSearch";
 
 const GET_MOVIES = gql`
   query GetMovies($title: String!) {
@@ -32,15 +33,16 @@ const Search = () => {
     setTitle(e.target.value);
   };
 
-  const getSearch = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     setTitle(searchValue);
     loadMovies({ variables: { title: title } });
+    dispatch(getSearch(title));
     setTitle("");
   };
 
   return (
-    <form onSubmit={getSearch}>
+    <form onSubmit={submitHandler}>
       <label>Enter Movie Title</label>
       <input value={title} onChange={updateSearch} />
       <button type="submit">Submit</button>

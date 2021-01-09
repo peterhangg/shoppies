@@ -1,18 +1,23 @@
 import { GET_MOVIES } from "../constants/action-types";
 
+// Default state matches gql query response
 const initialState = {
-  movies: [],
-  loading: false,
-  error: null
+  movieState: {
+    loading: false,
+    data: {
+      movies: [],
+    },
+    error: null,
+  },
 };
 
 const getMoviesReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_MOVIES:
-      return { movieState: action.payload }
+      return { movieState: action.payload };
     default:
       return state;
   }
-}
+};
 
 export default getMoviesReducer;
