@@ -7,6 +7,7 @@ import { HomePageWrapper, MainWrapper } from "./styles";
 const App = () => {
   return (
     <HomePageWrapper>
+      <h1>The Shoppies</h1>
       <Search />
       <MainWrapper>
         <Movies />
