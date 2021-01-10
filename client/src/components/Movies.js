@@ -8,26 +8,30 @@ const Movies = ({ data, loading, error, nominations, search }) => {
 
   return (
     <>
-      <h1>MOVIES</h1>
-      {search && <h3>Results for {search}</h3>}
       {loading && <p>Loading...</p>}
       {error && <p>Oops there was an error. Please search for another movie</p>}
       {data && data.movies.length > 0 && (
-        <ul>
-          {data.movies.map((movie) => (
-            <li key={movie.id}>
-              <p>{movie.title}</p>
-              <p>{movie.year}</p>
+        <div>
+          <h1>MOVIES</h1>
+          {search && <h3>Results for {search}</h3>}
+          <ul>
+            {data.movies.map((movie) => (
+              <li key={movie.id}>
+                <p>{movie.title}</p>
+                <p>{movie.year}</p>
                 <button
                   type="button"
-                  disabled={nominations.includes(movie) || nominations.length === 5}
+                  disabled={
+                    nominations.includes(movie) || nominations.length === 5
+                  }
                   onClick={() => dispatch(addNomination(movie))}
                 >
-                  Add
+                  Nominate
                 </button>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );
@@ -45,7 +49,7 @@ Movies.prototype = {
   data: PropTypes.object,
   loading: PropTypes.bool,
   nominations: PropTypes.array,
-  search: PropTypes.string
+  search: PropTypes.string,
 };
 
 export default connect(mapStateToProps)(Movies);

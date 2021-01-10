@@ -2,16 +2,17 @@ import React from "react";
 import Search from "./components/Search";
 import Movies from "./components/Movies";
 import Nominations from "./components/Nominations";
-
-import "./App.css";
+import { HomePageWrapper, MainWrapper } from "./styles";
 
 const App = () => {
   return (
-    <div className="App">
+    <HomePageWrapper>
       <Search />
-      <Movies />
-      <Nominations />
-    </div>
+      <MainWrapper>
+        <Movies />
+        <Nominations />
+      </MainWrapper>
+    </HomePageWrapper>
   );
 }
 

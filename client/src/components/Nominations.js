@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { deleteNomination } from "../actions/nominationActions";
 
 const Nominations = ({ nominations }) => {
@@ -9,17 +9,24 @@ const Nominations = ({ nominations }) => {
 
   return (
     <>
-      <h1>NOMINATIONS</h1>
       {nominations && nominations.length > 0 && (
-        <ul>
-          {nominations.map((nomination) => (
-            <li key={nomination.id}>
-              <p>{nomination.title}</p>
-              <p>{nomination.year}</p>
-              <button onClick={() => dispatch(deleteNomination(nomination.id))}>delete</button>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h1>NOMINATIONS</h1>
+          <ul>
+            {nominations.map((nomination) => (
+              <li key={nomination.id}>
+                <p>{nomination.title}</p>
+                <p>{nomination.year}</p>
+                <button
+                  onClick={() => dispatch(deleteNomination(nomination.id))}
+                >
+                  X
+                </button>
+              </li>
+            ))}
+          </ul>
+          {nominations.length === 5 && <p>Your nomination list is ready!</p>}
+        </div>
       )}
     </>
   );
