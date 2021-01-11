@@ -1,6 +1,5 @@
+require("dotenv").config();
 const { RESTDataSource } = require("apollo-datasource-rest");
-
-if (process.env.NODE_ENV !== "Production") require("./secrets");
 class MovieAPI extends RESTDataSource {
   constructor() {
     super();
@@ -17,8 +16,8 @@ class MovieAPI extends RESTDataSource {
         id: movie.imdbID,
         title: movie.Title,
         poster: movie.Poster,
-        year: movie.Year
-      }
+        year: movie.Year,
+      };
     });
   }
 }
