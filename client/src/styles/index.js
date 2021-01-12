@@ -72,10 +72,6 @@ export const MovieContainer = styled.div`
     margin-bottom: ${(props) => (props.nominations ? "32px" : "10px")};
   }
 
-  h3 {
-    color: ${colors.darkGrey};
-  }
-
   span {
     color: ${colors.gold};
   }
@@ -178,5 +174,17 @@ export const Form = styled.form`
       color: ${colors.white};
       background-color: ${colors.gold};
     }
+  }
+`;
+
+export const RequestContainer = styled.div`
+  height: 80%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  
+  img {
+    margin-bottom: 15px;
   }
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "./components/Search";
+import SearchForm from "./components/SearchForm";
 import Movies from "./components/Movies";
 import Nominations from "./components/Nominations";
 import Header from "./components/Header";
@@ -16,7 +16,7 @@ const App = () => {
         ></path>
       </svg>
       <Header />
-      <Search />
+      <SearchForm />
       <MainWrapper>
         <Movies />
         <Nominations />

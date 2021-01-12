@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "../styles/index";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -9,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Roboto', sans-serif;
+    color: ${colors.darkGrey};
   }
 `;
 
