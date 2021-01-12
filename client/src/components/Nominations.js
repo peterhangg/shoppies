@@ -38,7 +38,7 @@ const Nominations = ({ nominations }) => {
                 {nomination.title} ({nomination.year})
               </p>
               <Button onClick={() => dispatch(deleteNomination(nomination.id))}>
-                X
+                <i className="fas fa-trash fa-lg"/> 
               </Button>
             </MovieStyles>
           ))}

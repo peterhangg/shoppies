@@ -17,7 +17,7 @@ const GET_MOVIES = gql`
   }
 `;
 
-const Search = () => {
+const SearchForm = () => {
   const [title, setTitle] = useState("");
   const searchValue = useDebounce(title, 700);
   const dispatch = useDispatch();
@@ -48,12 +48,13 @@ const Search = () => {
         value={title}
         placeholder="Search Movie Title..."
         onChange={updateSearch}
+        required
       />
       <button type="submit">
-        Search
+        <i className="fas fa-search fa-lg"/> 
       </button>
     </Form>
   );
 };
 
-export default Search;
+export default SearchForm;
