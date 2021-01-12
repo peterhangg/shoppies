@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { deleteNomination } from "../actions/nominationActions";
-import { MovieGrid, MovieStyles } from "../styles/index";
+import {
+  MovieContainer,
+  MovieGrid,
+  MovieStyles,
+  Button,
+} from "../styles/index";
 import PosterPlaceholder from "../asset/movie-placeholder.jpeg";
 
 const Nominations = ({ nominations }) => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <h1>NOMINATIONS</h1>
+    <MovieContainer nominations>
+      <h2>NOMINATIONS</h2>
       {nominations && nominations.length > 0 && (
         <MovieGrid overflow={"hidden"}>
           {nominations.map((nomination) => (
@@ -21,20 +25,27 @@ const Nominations = ({ nominations }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={nomination.poster !== "N/A" ? nomination.poster : PosterPlaceholder} alt={nomination.name} />
+                <img
+                  src={
+                    nomination.poster !== "N/A"
+                      ? nomination.poster
+                      : PosterPlaceholder
+                  }
+                  alt={nomination.name}
+                />
               </a>
               <p>
                 {nomination.title} ({nomination.year})
               </p>
-              <button onClick={() => dispatch(deleteNomination(nomination.id))}>
+              <Button onClick={() => dispatch(deleteNomination(nomination.id))}>
                 X
-              </button>
+              </Button>
             </MovieStyles>
           ))}
         </MovieGrid>
       )}
       {nominations.length === 5 && <p>Your nomination list is ready!</p>}
-    </div>
+    </MovieContainer>
   );
 };
 

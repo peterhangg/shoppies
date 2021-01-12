@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import useDebounce from "../hook/useDebounce";
 import { getMovies } from "../actions/getMovies";
 import { getSearch } from "../actions/getSearch";
+import { Form } from "../styles/index";
 
 const GET_MOVIES = gql`
   query GetMovies($title: String!) {
@@ -42,14 +43,16 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler}>
       <input
         value={title}
         placeholder="Search Movie Title..."
         onChange={updateSearch}
       />
-      <button type="submit">Submit</button>
-    </form>
+      <button type="submit">
+        Search
+      </button>
+    </Form>
   );
 };
 
