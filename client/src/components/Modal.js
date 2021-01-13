@@ -8,7 +8,7 @@ import { resetSearch } from "../actions/searchActions";
 
 import { ModalWrapper, ClosedModalButton } from "../styles/index";
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, setShowMovieContainer }) => {
   const dispatch = useDispatch();
 
   const closeModalHandler = () => {
@@ -16,6 +16,7 @@ const Modal = ({ showModal, setShowModal }) => {
     dispatch(resetMovie());
     dispatch(resetNominations());
     dispatch(resetSearch());
+    setShowMovieContainer(false);
   };
 
   return (
@@ -41,6 +42,7 @@ const Modal = ({ showModal, setShowModal }) => {
 Modal.propTypes = {
   showModal: PropTypes.bool,
   setShowModal: PropTypes.func,
+  setShowMovieContainer: PropTypes.func,
 };
 
 export default Modal;

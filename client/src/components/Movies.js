@@ -69,7 +69,7 @@ const mapStateToProps = (state) => ({
   search: state.getSearchReducer,
 });
 
-Movies.prototype = {
+Movies.propTypes = {
   data: PropTypes.object,
   loading: PropTypes.bool,
   nominations: PropTypes.array,

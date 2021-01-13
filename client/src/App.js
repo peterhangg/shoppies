@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import SearchForm from "./components/SearchForm";
-import Movies from "./components/Movies";
-import Nominations from "./components/Nominations";
 import Header from "./components/Header";
-import { HomePageWrapper, MainWrapper } from "./styles";
+import { HomePageWrapper } from "./styles";
 import Modal from "./components/Modal";
+import MovieContainer from "./components/MovieContainer";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showMovieContainer, setShowMovieContainer] = useState(false);
 
   return (
     <HomePageWrapper>
@@ -19,12 +19,16 @@ const App = () => {
         ></path>
       </svg>
       <Header />
-      <SearchForm />
-      <MainWrapper>
-        <Movies />
-        <Nominations setShowModal={setShowModal} />
-      </MainWrapper>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <SearchForm showMovieContainer={showMovieContainer} setShowMovieContainer={setShowMovieContainer} />
+      <MovieContainer
+        setShowModal={setShowModal}
+        showMovieContainer={showMovieContainer}
+      />
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setShowMovieContainer={setShowMovieContainer}
+      />
     </HomePageWrapper>
   );
 };

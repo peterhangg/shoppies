@@ -50,7 +50,6 @@ export const MainWrapper = styled.div`
 `;
 
 export const PageHeader = styled.div`
-  // width: 80%;
   display: flex;
   align-items: center;
   h1 {
