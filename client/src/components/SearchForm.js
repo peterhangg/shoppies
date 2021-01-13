@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 import { useDispatch } from "react-redux";
 import useDebounce from "../hook/useDebounce";
-import { getMovies } from "../actions/getMovies";
-import { getSearch } from "../actions/getSearch";
+import { getMovies } from "../actions/movieActions";
+import { getSearch } from "../actions/searchActions";
 import { Form } from "../styles/index";
 
 const GET_MOVIES = gql`
@@ -48,6 +48,7 @@ const SearchForm = () => {
         value={title}
         placeholder="Search Movie Title..."
         onChange={updateSearch}
+        maxLength="75"
         required
       />
       <button type="submit">

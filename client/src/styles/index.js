@@ -122,7 +122,7 @@ export const MovieStyles = styled.div`
 export const Button = styled.button`
   color: ${colors.gold};
   background-color: ${colors.white};
-  padding: 10px 5px;
+  padding: ${(props) => props.submit ? "10px" : "10px 5px"};
   border-radius: 5px;
   cursor: pointer;
   outline: none;
@@ -183,8 +183,46 @@ export const RequestContainer = styled.div`
   flex-direction:column;
   justify-content: center;
   align-items: center;
-  
+  animation: 1s ${FadeIn} ease-in;
+
   img {
     margin-bottom: 15px;
+  }
+`;
+
+export const ModalWrapper = styled.div `
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  box-shadow: 0 5px 10px rgba(0,0,0, 0.2);
+  background-color: white;
+  color: ${colors.darkGrey};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  animation: 1s ${FadeIn} ease-in;
+
+  img {
+    margin-bottom: 1.5rem;
+  }
+`;
+
+export const ClosedModalButton = styled.button`
+  color: ${colors.darkGrey};
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: ${colors.gold};
   }
 `;
