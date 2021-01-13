@@ -24,6 +24,8 @@ export const HomePageWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   margin: auto;
+  overflow: hidden;
+  position: relative;
   animation: 2s ${FadeIn} ease-in;
 
   svg {
@@ -41,7 +43,7 @@ export const MainWrapper = styled.div`
   grid-column-gap: 20px;
   margin-top: 1rem;
   width: 70%;
-  height: 70%;
+  height: 72%;
   background-color: ${colors.white};
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
     rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
@@ -224,4 +226,42 @@ export const ClosedModalButton = styled.button`
   &:hover {
     color: ${colors.gold};
   }
+`;
+
+export const ToastContainer = styled.div`
+  position: absolute;
+  box-sizing: border-box;
+  top: 12px;
+  right: 0px;
+  transition: transform 0.5s ease;
+  background-color: #b69859;
+  color: white;
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  align-items: center;
+  transform: ${(props) => props.nominations};
+  -webkit-transform: ${(props) => props.nominations};
+`;
+
+export const CloseToastButton = styled.button`
+  color: #eeeeee;
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    color: #b69859;
+  }
+`;
+
+export const CheckIconWrapper = styled.div`
+  padding-right: 10px;
 `;
