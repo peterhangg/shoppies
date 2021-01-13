@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import { HomePageWrapper } from "./styles";
 import Modal from "./components/Modal";
 import MovieContainer from "./components/MovieContainer";
+import Toast from "./components/Toast";
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,6 +19,7 @@ const App = () => {
           d="M0,0L80,21.3C160,43,320,85,480,122.7C640,160,800,192,960,192C1120,192,1280,160,1360,144L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
         ></path>
       </svg>
+      <Toast />
       <Header />
       <SearchForm showMovieContainer={showMovieContainer} setShowMovieContainer={setShowMovieContainer} />
       <MovieContainer
