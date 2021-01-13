@@ -10,12 +10,17 @@ import {
 } from "../styles/index";
 import PosterPlaceholder from "../asset/movie-placeholder.jpeg";
 
-const Nominations = ({ nominations }) => {
+const Nominations = ({ nominations, setShowModal, data }) => {
   const dispatch = useDispatch();
 
   return (
-    <MovieContainer nominations>
+    <MovieContainer>
       <h2>NOMINATIONS</h2>
+      {((data && data.movies.length > 0) || nominations.length > 0) && (
+        <h3>
+          <span>{nominations.length}</span> of 5 NOMINATED
+        </h3>
+      )}
       {nominations && nominations.length > 0 && (
         <MovieGrid overflow={"hidden"}>
           {nominations.map((nomination) => (
@@ -38,23 +43,29 @@ const Nominations = ({ nominations }) => {
                 {nomination.title} ({nomination.year})
               </p>
               <Button onClick={() => dispatch(deleteNomination(nomination.id))}>
-                <i className="fas fa-trash fa-lg"/> 
+                <i className="fas fa-trash fa-lg" />
               </Button>
             </MovieStyles>
           ))}
         </MovieGrid>
       )}
-      {nominations.length === 5 && <p>Your nomination list is ready!</p>}
+      {nominations.length === 5 && (
+        <Button submit onClick={() => setShowModal(true)}>
+          Submit
+        </Button>
+      )}
     </MovieContainer>
   );
 };
 
 Nominations.propTypes = {
   nominations: PropTypes.array,
+  setShowModal: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   nominations: state.nominationsReducer,
+  data: state.getMoviesReducer.movieState.data,
 });
 
 export default connect(mapStateToProps)(Nominations);
