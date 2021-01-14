@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import useDebounce from "../hook/useDebounce";
 import { getMovies } from "../actions/movieActions";
 import { getSearch } from "../actions/searchActions";
-import { Form } from "../styles/index";
+import { Form } from "../styles";
 
 const GET_MOVIES = gql`
   query GetMovies($title: String!) {

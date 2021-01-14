@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Movies from "./Movies";
 import Nominations from "./Nominations";
-import { MainWrapper } from "../styles/index";
+import { MainWrapper } from "../styles";
 const MovieContainer = ({ setShowModal, showMovieContainer, nominations }) => {
   return (
     <>

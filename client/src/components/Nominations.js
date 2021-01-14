@@ -7,7 +7,7 @@ import {
   MovieGrid,
   MovieStyles,
   Button,
-} from "../styles/index";
+} from "../styles";
 import PosterPlaceholder from "../asset/movie-placeholder.jpeg";
 
 const Nominations = ({ nominations, setShowModal, data }) => {

@@ -49,7 +49,6 @@ const Movies = ({ data, loading, error, nominations, search }) => {
                   nominations.includes(movie) || nominations.length === 5
                 }
                 onClick={() => dispatch(addNomination(movie))}
-                theme
               >
                 Nominate
               </Button>

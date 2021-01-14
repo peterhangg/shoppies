@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { colors } from "../styles/index";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -11,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Montserrat', sans-serif;
-    color: ${colors.darkGrey};
+    color: ${({ theme }) => theme.primaryTextColor};
   }
 `;
 
