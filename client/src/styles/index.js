@@ -56,6 +56,8 @@ export const MainWrapper = styled.div`
 export const PageHeader = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 40%;
   h1 {
     color: ${({ theme }) => theme.primaryColor};
     font-size: 4rem;
@@ -153,6 +155,7 @@ export const Form = styled.form`
   justify-content: center;
   padding: 10px;
   width: 65%;
+  z-index: 12;
 
   input {
     width: 100%;
@@ -268,4 +271,49 @@ export const CloseToastButton = styled.button`
 
 export const CheckIconWrapper = styled.div`
   padding-right: 10px;
+`;
+
+export const ToggleWrapper = styled.div`
+  position: relative;
+`;
+
+export const ToggleButtonIcon = styled.label`
+  position: absolute;
+  width: 55px;
+  height: 28px;
+  top: 0;
+  left: 0;
+  border-radius: 14px;
+  border: 1px solid ${({ theme }) => theme.primaryColor};
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    background: url("moon.svg") no-repeat center;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    transition: 0.2s;
+  }
+`;
+export const ToggleButton = styled.input`
+  border-radius: 15px;
+  width: 55px;
+  height: 28px;
+  z-index: 10;
+  opacity: 0;
+  &:checked + ${ToggleButtonIcon} {
+    background: ${({ theme }) => theme.backgroundColor};
+    &::after {
+      content: "";
+      border: 1px soilid ${({ theme }) => theme.primaryColor};
+      background: url("sun.svg") no-repeat center;
+      display: block;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-left: 30px;
+      transition: 0.2s;
+    }
+  }
 `;
