@@ -27,13 +27,14 @@ export const HomePageWrapper = styled.div`
   overflow: hidden;
   position: relative;
   animation: 2s ${FadeIn} ease-in;
+  background-color: ${({ theme }) => theme.backgroundColor};
 
   svg {
-    display: inline-block; 
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    z-index: -1; 
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
   }
 `;
 
@@ -44,18 +45,19 @@ export const MainWrapper = styled.div`
   margin-top: 1rem;
   width: 70%;
   height: 72%;
-  background-color: ${colors.white};
-  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
-    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  box-shadow: ${({ theme }) => theme.primaryColor} 2px 2px 5px 0px,
+    rgba(255, 255, 255, 0.8) -2px -2px 5px 0px;
   border-radius: 10px;
   padding: 2rem;
+  z-index: 100;
 `;
 
 export const PageHeader = styled.div`
   display: flex;
   align-items: center;
   h1 {
-    color: ${colors.gold};
+    color: ${({ theme }) => theme.primaryColor};
     font-size: 4rem;
   }
 `;
@@ -69,12 +71,12 @@ export const IconWrapper = styled.div`
 export const MovieContainer = styled.div`
   text-align: center;
   h2 {
-    color: ${colors.gold};
+    color: ${({ theme }) => theme.primaryColor};
     margin-bottom: ${(props) => (props.nominations ? "32px" : "10px")};
   }
 
   span {
-    color: ${colors.gold};
+    color: ${({ theme }) => theme.primaryColorSpan};
   }
 `;
 
@@ -94,7 +96,7 @@ export const MovieStyles = styled.div`
   min-height: 376px;
   magin: 0 10px;
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  box-shadow: ${({ theme }) => theme.primaryColor} 0px 1px 1px, ${({ theme }) => theme.primaryColor} 0px 1px 1px;
   border-radius: 5px;
   animation: 2s ${FadeIn} ease-in;
   flex-direction: column;
@@ -121,27 +123,27 @@ export const MovieStyles = styled.div`
 `;
 
 export const Button = styled.button`
-  color: ${colors.gold};
-  background-color: ${colors.white};
-  padding: ${(props) => props.submit ? "10px" : "10px 5px"};
+  color: ${({ theme }) => theme.primaryColor};
+  background-color: ${({ theme }) => theme.backgroundColor};
+  padding: ${(props) => (props.submit ? "10px" : "10px 5px")};
   border-radius: 5px;
   cursor: pointer;
   outline: none;
   transition: background-color 0.3s linear, color 0.3s linear;
-  border: ${colors.gold} 1px solid;
+  border: ${({ theme }) => theme.primaryColor} 1px solid;
   box-sizing: border-box;
 
   &:hover {
-    background-color: ${colors.gold};
-    color: ${colors.white};
-    border: ${colors.gold} 1px solid;
+    background-color: ${({ theme }) => theme.primaryColor};
+    color: ${({ theme }) => theme.primaryColorTextHover};
+    border: ${({ theme }) => theme.primaryColor} 1px solid;
   }
 
   &:disabled {
     opacity: 0.5;
-    background-color: ${colors.darkGrey};
-    color: $${colors.white};
-    border : ${colors.darkGrey} 1px solid;
+    background-color: ${({ theme }) => theme.disabledColor};
+    color: ${({ theme }) => theme.disabledTextColor};
+    border: ${({ theme }) => theme.disabledColor} 1px solid;
     pointer-events: none;
   }
 `;
@@ -154,26 +156,27 @@ export const Form = styled.form`
 
   input {
     width: 100%;
-    border: 2px solid ${colors.gold};
+    border: 2px solid ${({ theme }) => theme.primaryColor};
     padding: 5px;
     border-right: none;
     height: 50px;
     outline: none;
     border-radius: 5px 0 0 5px;
-    color: ${colors.darkGrey};
+    background-color: ${({ theme }) => theme.backgroundColor};
+    color: ${({ theme }) => theme.primaryTextColor};
   }
 
   button {
-    color: ${colors.gold};
-    background-color: ${colors.white};
+    color: ${({ theme }) => theme.primaryColor};
+    background-color: ${({ theme }) => theme.backgroundColor};
     border-radius: 0 5px 5px 0;
     cursor: pointer;
-    border: 2px solid ${colors.gold};
+    border: 2px solid ${({ theme }) => theme.primaryColor};
     padding: 0 10px;
     transition: background-color 0.3s linear, color 0.3s linear;
     &:hover {
-      color: ${colors.white};
-      background-color: ${colors.gold};
+      color: ${({ theme }) => theme.primaryColorTextHover};
+      background-color: ${({ theme }) => theme.primaryHoverColor};
     }
   }
 `;
@@ -181,7 +184,7 @@ export const Form = styled.form`
 export const RequestContainer = styled.div`
   height: 80%;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   animation: 1s ${FadeIn} ease-in;
@@ -191,19 +194,20 @@ export const RequestContainer = styled.div`
   }
 `;
 
-export const ModalWrapper = styled.div `
+export const ModalWrapper = styled.div`
   width: 700px;
   height: 500px;
   position: absolute;
-  box-shadow: 0 5px 10px rgba(0,0,0, 0.2);
-  background-color: white;
-  color: ${colors.darkGrey};
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: ${({ theme }) => theme.backgroundColor};
+  color: ${({ theme }) => theme.primaryTextColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 3px;
   animation: 1s ${FadeIn} ease-in;
+  z-index: 1000;
 
   img {
     margin-bottom: 1.5rem;
@@ -211,7 +215,7 @@ export const ModalWrapper = styled.div `
 `;
 
 export const ClosedModalButton = styled.button`
-  color: ${colors.darkGrey};
+  color: ${({ theme }) => theme.primaryTextColor};
   background: none;
   border: none;
   outline: none;
@@ -224,7 +228,7 @@ export const ClosedModalButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: ${colors.gold};
+    color: ${({ theme }) => theme.primaryHoverColor};
   }
 `;
 
@@ -258,7 +262,7 @@ export const CloseToastButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: #b69859;
+    color: ${({ theme }) => theme.disabledColor};
   }
 `;
 

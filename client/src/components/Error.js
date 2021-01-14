@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorSVG from "../asset/404.svg";
-import { RequestContainer } from "../styles/index";
+import { RequestContainer } from "../styles";
 
 const Error = () => {
   return (
