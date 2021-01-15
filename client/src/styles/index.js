@@ -10,20 +10,13 @@ export const FadeIn = keyframes`
   }
 `;
 
-export const colors = {
-  gold: "#b69859",
-  darkGrey: "#3c3c3c",
-  white: "#ffffff",
-  black: "#000000",
-};
-
-export const HomePageWrapper = styled.div`
+export const HomePageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
   margin: auto;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   animation: 2s ${FadeIn} ease-in;
@@ -36,43 +29,75 @@ export const HomePageWrapper = styled.div`
     left: 0;
     z-index: 10;
   }
-`;
 
-export const MainWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
-  margin-top: 1rem;
-  width: 70%;
-  height: 72%;
-  background-color: ${({ theme }) => theme.backgroundColor};
-  box-shadow: ${({ theme }) => theme.primaryColor} 2px 2px 5px 0px,
-    rgba(255, 255, 255, 0.8) -2px -2px 5px 0px;
-  border-radius: 10px;
-  padding: 2rem;
-  z-index: 100;
+  @media (min-width: 1024px) {
+    height: 100vh;
+  }
 `;
 
 export const PageHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 45%;
+  max-width: 1000px;
+  padding: 10px;
+
   h1 {
     color: ${({ theme }) => theme.primaryColor};
-    font-size: 4rem;
+    font-size: clamp(1.5rem, 3vw, 4rem);
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    padding: 4px;
   }
 `;
 
 export const IconWrapper = styled.div`
+  height: 11vh;
+  width: 11vw;
+
   img {
-    height: 150px;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const MainWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  margin: 1rem 0;
+  width: 75%;
+  max-width: 1300px;
+  height: 75%;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  box-shadow: ${({ theme }) => theme.primaryColor} 2px 2px 5px 0px,
+    rgba(255, 255, 255, 0.8) -2px -2px 5px 0px;
+  border-radius: 10px;
+  padding: 2rem;
+  z-index: 100;
+
+  @media (max-width: 700px) {
+    width: 95%;
   }
 `;
 
 export const MovieContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  height: 100%;
+`;
+
+export const CategoryWrapper = styled.div`
   text-align: center;
+  padding-bottom: 5px;
+
   h2 {
+    font-size: clamp(1rem, 2vw, 1.75rem);
     color: ${({ theme }) => theme.primaryColor};
     margin-bottom: ${(props) => (props.nominations ? "32px" : "10px")};
   }
@@ -80,25 +105,57 @@ export const MovieContainer = styled.div`
   span {
     color: ${({ theme }) => theme.primaryColorSpan};
   }
+
+  h3 {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+  }
 `;
 
 export const MovieGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(1, minmax(auto, 1fr));
+  grid-template-rows: auto 1fr;
   grid-gap: 20px;
-  overflow: ${(props) => props.overflow};
+  overflow: auto;
+  height: 85%;
   max-height: 800px;
-  overflow-x: hidden;
   padding: 10px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-height: 600px) {
+    max-height: 300px;
+  }
+
+  @media (min-height: 601px) and (max-height: 735px) {
+    max-height: 325px;
+  }
+
+  @media (min-height: 736px) and (max-height: 800px) {
+    max-height: 375px;
+  }
+
+  @media (min-height: 801px) and (max-height: 950px) {
+    max-height: 425px;
+  }
+
+  @media (min-height: 951px) and (max-height: 1100px) {
+    max-height: 600px;
+  }
 `;
 
 export const MovieStyles = styled.div`
-  height: 100%;
-  min-height: 376px;
   magin: 0 10px;
   display: flex;
-  box-shadow: ${({ theme }) => theme.primaryColor} 0px 1px 1px, ${({ theme }) => theme.primaryColor} 0px 1px 1px;
+  text-align: center;
+  box-shadow: ${({ theme }) => theme.primaryColor} 0px 1px 1px,
+    ${({ theme }) => theme.primaryColor} 0px 1px 1px;
   border-radius: 5px;
   animation: 2s ${FadeIn} ease-in;
   flex-direction: column;
@@ -113,6 +170,10 @@ export const MovieStyles = styled.div`
       transform: scale(1.03);
       transition: transform 0.3s;
     }
+  }
+
+  p {
+    font-size: clamp(0.75rem, 1vw, 1rem);
   }
 
   button {
@@ -150,15 +211,28 @@ export const Button = styled.button`
   }
 `;
 
+export const FormWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 50;
+
+  h3 {
+    font-size: clamp(0.8rem, 1.25vw, 1rem);
+  }
+`;
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   padding: 10px;
   width: 65%;
-  z-index: 12;
 
   input {
     width: 100%;
+    max-width: 1000px;
+    z-index: 100;
     border: 2px solid ${({ theme }) => theme.primaryColor};
     padding: 5px;
     border-right: none;
@@ -182,6 +256,10 @@ export const Form = styled.form`
       background-color: ${({ theme }) => theme.primaryHoverColor};
     }
   }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const RequestContainer = styled.div`
@@ -197,23 +275,49 @@ export const RequestContainer = styled.div`
   }
 `;
 
+export const ModalImageWrapper = styled.div`
+  width: 60%;
+  height: 60%;
+  padding: 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const ModalTextWrapper = styled.div`
+  text-align: center;
+`;
+
 export const ModalWrapper = styled.div`
-  width: 700px;
-  height: 500px;
-  position: absolute;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  background-color: ${({ theme }) => theme.backgroundColor};
-  color: ${({ theme }) => theme.primaryTextColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
+  height: 50%;
+  max-width: 550px;
+  max-height: 370px;
+  position: absolute;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: ${({ theme }) => theme.backgroundColor};
+  color: ${({ theme }) => theme.primaryTextColor};
   border-radius: 3px;
   animation: 1s ${FadeIn} ease-in;
   z-index: 1000;
 
-  img {
-    margin-bottom: 1.5rem;
+  h3 {
+    font-size: clamp(0.9rem, 1.25vw, 1rem);
+  }
+
+  p {
+    font-size: clamp(0.75rem, 1vw, 1rem);
+  }
+
+  @media (max-width: 768px) {
+    width: 60%;
+    height: 40%;
   }
 `;
 
@@ -249,6 +353,14 @@ export const ToastContainer = styled.div`
   align-items: center;
   transform: ${(props) => props.nominations};
   -webkit-transform: ${(props) => props.nominations};
+
+  h3 {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+  }
+
+  p {
+    font-size: clamp(0.75rem, 1vw, 1rem);
+  }
 `;
 
 export const CloseToastButton = styled.button`
@@ -316,4 +428,8 @@ export const ToggleButton = styled.input`
       transition: 0.2s;
     }
   }
+`;
+
+export const SubmitButtonWrapper = styled.div`
+  padding: 10px;
 `;

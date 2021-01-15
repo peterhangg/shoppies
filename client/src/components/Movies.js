@@ -7,6 +7,7 @@ import {
   MovieGrid,
   MovieStyles,
   Button,
+  CategoryWrapper,
 } from "../styles/index";
 import Loader from "./Loader";
 import Error from "./Error";
@@ -16,16 +17,18 @@ const Movies = ({ data, loading, error, nominations, search }) => {
 
   return (
     <MovieContainer>
-      <h2>MOVIES</h2>
-      {search && (
-        <h3>
-          RESULTS FOR: "<span>{search}</span>"
-        </h3>
-      )}
+      <CategoryWrapper>
+        <h2>MOVIES</h2>
+        {search && (
+          <h3>
+            RESULTS FOR: "<span>{search}</span>"
+          </h3>
+        )}
+      </CategoryWrapper>
       {error && <Error />}
       {loading && <Loader />}
       {data && data.movies.length > 0 && (
-        <MovieGrid overflow={data.movies.length > 6 ? "scroll" : "hidden"}>
+        <MovieGrid>
           {data.movies.map((movie) => (
             <MovieStyles key={movie.id}>
               <a

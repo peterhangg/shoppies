@@ -6,7 +6,7 @@ import { resetMovie } from "../actions/movieActions";
 import { resetNominations } from "../actions/nominationActions";
 import { resetSearch } from "../actions/searchActions";
 
-import { ModalWrapper, ClosedModalButton } from "../styles/index";
+import { ModalWrapper, ClosedModalButton, ModalImageWrapper, ModalTextWrapper } from "../styles/index";
 
 const Modal = ({ showModal, setShowModal, setShowMovieContainer }) => {
   const dispatch = useDispatch();
@@ -23,10 +23,13 @@ const Modal = ({ showModal, setShowModal, setShowMovieContainer }) => {
     <>
       {showModal && (
         <ModalWrapper>
-          <img src={MailSVG} alt="Mail Img" />
-          <h2>Thank you</h2>
-          <p>Your nominations has been submitted!</p>
-
+          <ModalImageWrapper>
+            <img src={MailSVG} alt="Mail Img" />
+          </ModalImageWrapper>
+          <ModalTextWrapper>
+            <h3>Thank you</h3>
+            <p>Your nominations has been submitted!</p>
+          </ModalTextWrapper>
           <ClosedModalButton
             aria-label="close modal"
             onClick={closeModalHandler}

@@ -7,11 +7,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     transition: all 0.2s linear;
   }
+
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Montserrat', sans-serif;
     color: ${({ theme }) => theme.primaryTextColor};
+  }
+
+  img {
+    max-width: 100%;
   }
 `;
 
