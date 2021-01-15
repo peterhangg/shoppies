@@ -7,13 +7,13 @@ import {
   ToggleButtonIcon,
   ToggleButton,
 } from "../styles";
-import awardIcon from "../asset/award.svg";
+import ShopifyLogo from "../asset/shopify.svg";
 
 const Header = ({ setUseDarkTheme, useDarkTheme }) => {
   return (
     <PageHeader>
       <IconWrapper>
-        <img src={awardIcon} alt="award icon" />
+        <img src={ShopifyLogo} alt="Shopify icon" />
       </IconWrapper>
       <h1>THE SHOPPIES</h1>
       <ToggleWrapper>

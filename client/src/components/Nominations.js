@@ -7,6 +7,8 @@ import {
   MovieGrid,
   MovieStyles,
   Button,
+  SubmitButtonWrapper,
+  CategoryWrapper
 } from "../styles";
 import PosterPlaceholder from "../asset/movie-placeholder.jpeg";
 
@@ -15,12 +17,14 @@ const Nominations = ({ nominations, setShowModal, data }) => {
 
   return (
     <MovieContainer>
-      <h2>NOMINATIONS</h2>
-      {((data && data.movies.length > 0) || nominations.length > 0) && (
-        <h3>
-          <span>{nominations.length}</span> of 5 NOMINATED
-        </h3>
-      )}
+      <CategoryWrapper>
+        <h2>NOMINATIONS</h2>
+        {((data && data.movies.length > 0) || nominations.length > 0) && (
+          <h3>
+            <span>{nominations.length}</span> of 5 NOMINATED
+          </h3>
+        )}
+      </CategoryWrapper>
       {nominations && nominations.length > 0 && (
         <MovieGrid overflow={"hidden"}>
           {nominations.map((nomination) => (
@@ -50,9 +54,11 @@ const Nominations = ({ nominations, setShowModal, data }) => {
         </MovieGrid>
       )}
       {nominations.length === 5 && (
-        <Button submit onClick={() => setShowModal(true)}>
-          Submit
-        </Button>
+        <SubmitButtonWrapper>
+          <Button submit onClick={() => setShowModal(true)}>
+            Submit
+          </Button>
+        </SubmitButtonWrapper>
       )}
     </MovieContainer>
   );

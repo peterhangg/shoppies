@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import useDebounce from "../hook/useDebounce";
 import { getMovies } from "../actions/movieActions";
 import { getSearch } from "../actions/searchActions";
-import { Form } from "../styles";
+import { Form, FormWrapper } from "../styles";
 
 const GET_MOVIES = gql`
   query GetMovies($title: String!) {
@@ -45,7 +45,7 @@ const SearchForm = ({ setShowMovieContainer, showMovieContainer }) => {
   };
 
   return (
-    <>
+    <FormWrapper>
       <Form onSubmit={submitHandler}>
         <input
           value={title}
@@ -59,7 +59,7 @@ const SearchForm = ({ setShowMovieContainer, showMovieContainer }) => {
         </button>
       </Form>
       {!showMovieContainer && <h3>Vote for your favourite movies!</h3>}
-    </>
+    </FormWrapper>
   );
 };
 

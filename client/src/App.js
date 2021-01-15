@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchForm from "./components/SearchForm";
 import Header from "./components/Header";
-import { HomePageWrapper } from "./styles";
+import { HomePageContainer } from "./styles";
 import Modal from "./components/Modal";
 import MovieContainer from "./components/MovieContainer";
 import Toast from "./components/Toast";
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Theme useDarkTheme={useDarkTheme}>
       <GlobalStyle />
-      <HomePageWrapper>
+      <HomePageContainer>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#b69859"
@@ -39,7 +39,7 @@ const App = () => {
           setShowModal={setShowModal}
           setShowMovieContainer={setShowMovieContainer}
         />
-      </HomePageWrapper>
+      </HomePageContainer>
     </Theme>
   );
 };
