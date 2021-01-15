@@ -22,7 +22,6 @@ We'd like a simple to use interface that makes it easy to:
 
 
 ## Tech Stack
----
 * React
 * Styled-Components
 * Redux
@@ -31,7 +30,6 @@ We'd like a simple to use interface that makes it easy to:
 * GraphQL
 
 ## Installion & Setup
----
 To run the app, run these commands in two separate terminal windows from the root:
 
 ```bash
