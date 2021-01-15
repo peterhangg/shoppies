@@ -1,9 +1,8 @@
 # The Shoppies
 
-A React web app for the Shopify frontend 2021 Challenge. View [Demo] (https://react-shoppies.netlify.app/).
+A React web app for the Shopify frontend 2021 Challenge. View [Demo](https://react-shoppies.netlify.app/)
 
 ## The Challenge
----
 We need a webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.
 
 We'd like a simple to use interface that makes it easy to:
