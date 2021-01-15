@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import getMoviesReducer from "./getMoviesReducer";
+import getMoviesReducer from "./moviesReducer";
 import nominationsReducer from "./nominationsReducer";
-import getSearchReducer from "./getSearchReducer";
+import getSearchReducer from "./searchReducer";
 
 const rootReducer = combineReducers({
   getMoviesReducer,
