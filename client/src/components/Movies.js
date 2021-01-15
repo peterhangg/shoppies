@@ -1,35 +1,65 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { addNomination } from "../actions/nominationActions";
+import {
+  MovieContainer,
+  MovieGrid,
+  MovieStyles,
+  Button,
+  CategoryWrapper,
+} from "../styles/index";
+import Loader from "./Loader";
+import Error from "./Error";
+import PosterPlaceholder from "../asset/movie-placeholder.jpeg";
 const Movies = ({ data, loading, error, nominations, search }) => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <h1>MOVIES</h1>
-      {search && <h3>Results for {search}</h3>}
-      {loading && <p>Loading...</p>}
-      {error && <p>Oops there was an error. Please search for another movie</p>}
+    <MovieContainer>
+      <CategoryWrapper>
+        <h2>MOVIES</h2>
+        {search && (
+          <h3>
+            RESULTS FOR: "<span>{search}</span>"
+          </h3>
+        )}
+      </CategoryWrapper>
+      {error && <Error />}
+      {loading && <Loader />}
       {data && data.movies.length > 0 && (
-        <ul>
+        <MovieGrid>
           {data.movies.map((movie) => (
-            <li key={movie.id}>
-              <p>{movie.title}</p>
-              <p>{movie.year}</p>
-                <button
-                  type="button"
-                  disabled={nominations.includes(movie) || nominations.length === 5}
-                  onClick={() => dispatch(addNomination(movie))}
-                >
-                  Add
-                </button>
-            </li>
+            <MovieStyles key={movie.id}>
+              <a
+                href={`https://www.imdb.com/title/${movie.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={
+                    movie.poster !== "N/A" ? movie.poster : PosterPlaceholder
+                  }
+                  alt={movie.name}
+                />
+              </a>
+              <p>
+                {movie.title} ({movie.year})
+              </p>
+              <Button
+                type="button"
+                disabled={
+                  nominations.includes(movie) || nominations.length === 5
+                }
+                onClick={() => dispatch(addNomination(movie))}
+              >
+                Nominate
+              </Button>
+            </MovieStyles>
           ))}
-        </ul>
+        </MovieGrid>
       )}
-    </>
+    </MovieContainer>
   );
 };
 
@@ -41,11 +71,11 @@ const mapStateToProps = (state) => ({
   search: state.getSearchReducer,
 });
 
-Movies.prototype = {
+Movies.propTypes = {
   data: PropTypes.object,
   loading: PropTypes.bool,
   nominations: PropTypes.array,
-  search: PropTypes.string
+  search: PropTypes.string,
 };
 
 export default connect(mapStateToProps)(Movies);

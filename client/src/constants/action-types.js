@@ -2,3 +2,6 @@ export const GET_MOVIES = "GET_MOVIES";
 export const ADD_NOMINATION = "ADD_NOMONATION";
 export const DELETE_NOMINATION = "DELETE_NOMINATION";
 export const GET_SEARCH = "GET_SEARCH";
+export const MOVIE_RESET = "MOVIE_RESET";
+export const RESET_NOMINATIONS = "RESET_NOMINATIONS";
+export const RESET_SEARCH = "RESET_SEARCH";
