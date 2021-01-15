@@ -401,7 +401,7 @@ export const ToggleButtonIcon = styled.label`
   &::after {
     content: "";
     display: block;
-    background: url("moon.svg") no-repeat center;
+    background: url("sun.svg") no-repeat center;
     width: 20px;
     height: 20px;
     margin: 3px;
@@ -419,7 +419,7 @@ export const ToggleButton = styled.input`
     &::after {
       content: "";
       border: 1px soilid ${({ theme }) => theme.primaryColor};
-      background: url("sun.svg") no-repeat center;
+      background: url("moon.svg") no-repeat center;
       display: block;
       border-radius: 50%;
       width: 20px;
